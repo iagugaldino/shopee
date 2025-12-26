@@ -1677,7 +1677,29 @@
           muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
         }
       }
-      
+      // Função para carregar o vídeo
+      function carregarVideo() {
+        // Insere vturb-smartplayer e o script apenas quando chamado (etapa final)
+        var container = document.getElementById('videoContainer');
+        if (!container) return;
+        // não inserir se já existir o player ou o script
+        if (container.querySelector('vturb-smartplayer') || document.querySelector('script[data-vturb-player]')) return;
+
+        // criar elemento do player
+        var playerEl = document.createElement('vturb-smartplayer');
+        playerEl.id = 'vid-691699d6bb5c359210e73df8';
+        playerEl.style.display = 'block';
+        playerEl.style.margin = '0 auto';
+        playerEl.style.width = '100%';
+        container.appendChild(playerEl);
+
+        // criar e inserir script do player
+        var s = document.createElement('script');
+        s.src = 'https://scripts.converteai.net/cbc3f7a6-d360-4c6e-856a-ba1089b139e7/players/691699d6bb5c359210e73df8/v4/player.js';
+        s.async = true;
+        s.setAttribute('data-vturb-player', '1');
+        s.onload = function() { console.log('vturb player script carregado'); };
+        document.head.appendChild(s);
       }
     </script>
   
